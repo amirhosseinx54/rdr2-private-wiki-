@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171512">
+  <title>RDR II — دانشنامه خصوصی</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain"></div>
+  <section id="auth-screen" class="auth-screen">
+    <div class="auth-art">
+      <div class="brand-mark">R<span>★</span>R</div>
+      <p class="eyebrow">A PRIVATE FAN ENCYCLOPEDIA</p>
+      <h1>RED DEAD<br><em>REDEMPTION</em> II</h1>
+      <p class="auth-tagline">هر داستانی، ردپایی از خودش به جا می‌گذارد.</p>
+    </div>
+    <div class="auth-panel">
+      <div class="auth-tabs">
+        <button class="tab active" data-auth-tab="login">ورود</button>
+        <button class="tab" data-auth-tab="signup">ساخت حساب</button>
+      </div>
+      <form id="login-form" class="auth-form">
+        <h2>خوش برگشتی، کابوی</h2>
+        <p class="muted">برای ورود به آرشیو خصوصی RDR2 اطلاعاتت را وارد کن.</p>
+        <label>ایمیل<input name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+        <label>رمز عبور<input name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="••••••••"></label>
+        <button class="btn primary full" type="submit">ورود به سایت <span>←</span></button>
+      </form>
+      <form id="signup-form" class="auth-form hidden">
+        <h2>عضویت در گروه</h2>
+        <p class="muted">بعد از ساخت حساب، مدیر باید دسترسی‌ات را تأیید کند.</p>
+        <label>نام نمایشی<input name="display_name" type="text" required maxlength="30" placeholder="مثلاً Arthur"></label>
+        <label>ایمیل<input name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+        <label>رمز عبور<input name="password" type="password" autocomplete="new-password" required minlength="8" placeholder="حداقل ۸ کاراکتر"></label>
+        <button class="btn primary full" type="submit">ساخت حساب <span>←</span></button>
+      </form>
+      <p id="auth-message" class="notice" aria-live="polite"></p>
+      <p class="tiny-note">این سایت یک پروژه هواداری و غیررسمی است و وابستگی‌ای به Rockstar Games ندارد.</p>
+    </div>
+  </section>
+
+  <div id="app" class="hidden">
+    <header class="topbar">
+      <a class="wordmark" href="#" data-view="home">RDR<span>★</span>II <small>FIELD GUIDE</small></a>
+      <nav class="main-nav">
+        <button class="nav-link active" data-view="home">خانه</button>
+        <button class="nav-link" data-view="categories">دانشنامه</button>
+        <button class="nav-link" data-view="favorites">علاقه‌مندی‌ها</button>
+        <button class="nav-link" data-view="community">انجمن</button>
+        <button class="nav-link admin-only hidden" data-view="admin">مدیریت</button>
+      </nav>
+      <div class="user-area"><span id="user-label"></span><button id="logout-btn" class="logout">خروج</button></div>
+    </header>
+
+    <main>
+      <section id="hero" class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">WELCOME TO THE FRONTIER</p>
+          <h1>به غرب<br><em>وحشی</em> خوش آمدی.</h1>
+          <p>راهنمایی برای گشت‌وگذار در دنیای Red Dead Redemption 2؛ از شخصیت‌ها و مأموریت‌ها تا اسلحه‌ها، اسب‌ها و رازهای پنهان.</p>
+          <button class="btn primary" data-view="categories">گشت‌وگذار در دانشنامه <span>←</span></button>
+        </div>
+        <div class="hero-stamp"><span>EST.</span><strong>1899</strong><small>THE LAST<br>FRONTIER</small></div>
+        <div class="hero-bottom"><span>NEW HANOVER</span><span>★</span><span>AMBARINO</span><span>★</span><span>LEMOYNE</span></div>
+      </section>
+
+      <section class="content-wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">EXPLORE THE WORLD</p><h2 id="page-title">دفترچه راهنمای غرب</h2></div>
+          <div class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="جست‌وجو در دانشنامه..."></div>
+        </div>
+        <div id="home-content">
+          <div class="stats-row">
+            <div class="stat"><strong>1899</strong><span>سال داستان</span></div>
+            <div class="stat"><strong>5</strong><span>ایالت خیالی</span></div>
+            <div class="stat"><strong>1</strong><span>گروه خارج از قانون</span></div>
+          </div>
+          <h3 class="subheading">دسته‌بندی‌ها</h3>
+          <div id="category-grid" class="category-grid"></div>
+          <div class="quote-panel"><span class="quote-mark">“</span><p>We can't change what's done, we can only move on.</p><small>— ARTHUR MORGAN</small></div>
+        </div>
+        <div id="listing-content" class="hidden"></div>
+        <div id="detail-content" class="hidden"></div>
+        <div id="community-content" class="hidden"></div>
+        <div id="admin-content" class="hidden"></div>
+      </section>
+    </main>
+    <footer><span>RDR★II FIELD GUIDE</span><span>یک پروژه هواداری ساخته‌شده برای دوستان</span><span>© FAN PROJECT</span></footer>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
